@@ -1,8 +1,8 @@
 program raices_complejas
     implicit none
-    complex :: a, b, c, discriminante, raiz1, raiz2
+    complex a, b, c, discriminante, raiz1, raiz2
     complex, parameter :: i = (0.0, 1.0)
-    complex :: sqrt_discriminante
+    complex sqrt_discriminante
 
     ! Leer los coeficientes a, b, c
     print *, 'Ingrese el coeficiente a (parte real, parte imaginaria): '
