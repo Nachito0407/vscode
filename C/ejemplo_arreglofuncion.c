@@ -26,23 +26,23 @@ int main(int argc, char const *argv[])
     return 0;
 
 }
-
+//funciones con arrays
 void ingresarvector(int X[],int t)
 {
     int i;
     for ( i = 0; i < t; i++)
-    {
+        {
         printf("ingrese elemento %d \n\n", i);
         scanf("%d" ,& X[i]);
-    }
+        }
 }
 
 void mostrarvector(int X[], int t)
 {
     int i;
     for ( i = 0; i < t ; i++)
-    {
+        {
         printf("%5d", X[i]);
-    }
+        }
     
 }
