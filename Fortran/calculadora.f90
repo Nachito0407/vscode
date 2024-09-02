@@ -69,6 +69,7 @@ Program calculadora
         Read(*,*) b
         Write(*,*) "ingrese un valor c:"
         Read(*,*) c
+        
         discriminante= (b**2) - 4*a*c
         if ( discriminante>0 ) then !para raices reales
             raiz1=(-b+sqrt(discriminante))/(2.0*a)
