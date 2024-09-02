@@ -88,5 +88,6 @@ Program calculadora
 
         Write(*,*) "operacion no soportada"
 
-    end select
+    end select  
+        
     end program calculadora
