@@ -11,14 +11,14 @@ void transpuesta(float[][cc], float[][cc], int, int);
 float prodesc(float[], float[], int);
 
 int main(int argc, char const *argv[]) {
-    float A[cf][cc], B[cf][cc], C[cf][cc];
+    float A[cf][cc], Y[cf][cc], Z[cf][cc];
 
     ingresar_matriz(A, cf, cc);
-    ingresar_matriz(B, cf, cc);
+    ingresar_matriz(Y, cf, cc);
 
-    multmat2(A, B, C, cf, cc);
+    multmat2(A, Y, Z, cf, cc);
 
-    mostrar_matriz(C, cf, cc);
+    mostrar_matriz(Z, cf, cc);
 
     return 0;
 }
