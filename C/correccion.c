@@ -1,12 +1,12 @@
 #include <stdio.h>
-// #include <conio.h> // Evitar si no es necesario
+#include <conio.h>
 
-#define cf 2
-#define cc 2
+#define cf 3
+#define cc 3
 
 void ingresar_matriz(float [][cc], int, int);
 void mostrar_matriz(float [][cc], int, int);
-void multmat2(float [][cc], float [][cc], float [][cc], int, int);
+void multiplicar_mat(float [][], float [][], float [][], int, int);
 void transpuesta(float[][cc], float[][cc], int, int);
 float prodesc(float[], float[], int);
 
@@ -43,7 +43,7 @@ void mostrar_matriz(float X[][cc], int nf, int nc) {
     }
 }
 
-void multmat2(float A[][cc], float Y[][cc], float Z[][cc], int cf, int cc) {
+void multiplicar_mat(float A[][cc], float Y[][cc], float Z[][cc], int cf, int cc) {
     int i, j, k;
     for (i = 0; i < cf; i++) {
         for (j = 0; j < cc; j++) {
