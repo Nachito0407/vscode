@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <conio.h>
 #define NF 3
 #define NC 3
 

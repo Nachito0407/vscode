@@ -1,9 +1,9 @@
 program encontrar_raiz
     implicit none
 
-    real :: a, b, tolerancia, fa, fb, medio, fmedio, raiz
-    real :: x, fx, error,f
-    integer :: iteraciones
+    real  a, b, tolerancia, fa, fb, medio, fmedio, raiz
+    real  x, fx, error,f
+    integer  iteraciones
 
     ! Solicitar al usuario los valores de entrada para ambos métodos
     print *, 'Ingrese el valor de a (límite inferior del intervalo):'
