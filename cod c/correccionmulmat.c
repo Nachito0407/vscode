@@ -1,29 +1,30 @@
 #include <stdio.h>
 #include <conio.h>
 
-#define cf 3
-#define cc 3
+#define CF 3
+#define CC 3
 
-void ingresar_matriz(float [][cc], int, int);
-void mostrar_matriz(float [][cc], int, int);
-void multiplicar_mat(float [][], float [][], float [][], int, int);
-void transpuesta(float[][cc], float[][cc], int, int);
+void mostrarvector(float X[], int t);
+void ingresar_matriz(float [][CC], int, int);
+void mostrar_matriz(float [][CC], int, int);
+void multiplicar_mat(float [][CC], float [][CC], float [][CC], int, int);
+void transpuesta(float[][CC], float[][CC], int, int);
 float prodesc(float[], float[], int);
 
 int main(int argc, char const *argv[]) {
-    float A[cf][cc], Y[cf][cc], Z[cf][cc];
+    float A[CF][CC], Y[CF][CC], Z[CF][CC],aux[CF][CC];
 
-    ingresar_matriz(A, cf, cc);
-    ingresar_matriz(Y, cf, cc);
+    ingresar_matriz(A, CF, CC);
+    ingresar_matriz(Y, CF, CC);
 
-    multmat2(A, Y, Z, cf, cc);
+    multiplicar_mat(A, Y, Z, CF, CC);
 
-    mostrar_matriz(Z, cf, cc);
+    mostrar_matriz(Z, CF, CC);
 
     return 0;
 }
 
-void ingresar_matriz(float X[][cc], int nf, int nc) {
+void ingresar_matriz(float X[][CC], int nf, int nc) {
     int i, j;
     for (i = 0; i < nf; i++) {
         for (j = 0; j < nc; j++) {
@@ -33,7 +34,7 @@ void ingresar_matriz(float X[][cc], int nf, int nc) {
     }
 }
 
-void mostrar_matriz(float X[][cc], int nf, int nc) {
+void mostrar_matriz(float X[][CC], int nf, int nc) {
     int i, j;
     for (i = 0; i < nf; i++) {
         for (j = 0; j < nc; j++) {
@@ -43,7 +44,7 @@ void mostrar_matriz(float X[][cc], int nf, int nc) {
     }
 }
 
-void multiplicar_mat(float A[][cc], float Y[][cc], float Z[][cc], int cf, int cc) {
+void multiplicar_mat(float A[][CC], float Y[][CC], float Z[][CC], int cf, int cc) {
     int i, j, k;
     for (i = 0; i < cf; i++) {
         for (j = 0; j < cc; j++) {
@@ -62,4 +63,13 @@ float prodesc(float vec1[], float vec2[], int n) {
         resultado += vec1[k] * vec2[k];
     }
     return resultado;
+}
+void mostrarvector(float X[], int t)
+{
+    int i;
+    for (i = 0; i < t; i++)
+    {
+        printf("%7.2f", X[i]);
+    }
+    printf("\n");
 }

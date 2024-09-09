@@ -6,24 +6,23 @@ program encontrar_raiz
     real  x, fx, error
     integer  iteraciones
 
-    ! Solicitar al usuario los valores de entrada para el método de Bisección
-    print *, 'Método de Bisección:'
-    print *, 'Ingrese el valor de a (límite inferior del intervalo):'
+    print *, 'Metodo de Biseccion:'
+    print *, 'Ingrese el valor de a (limite inferior del intervalo):'
     read *, a_bis
-    print *, 'Ingrese el valor de b (límite superior del intervalo):'
+    print *, 'Ingrese el valor de b (limite superior del intervalo):'
     read *, b_bis
     print *, 'Ingrese la tolerancia deseada:'
     read *, tolerancia_bis
 
-    ! Verificar que la función cambie de signo en el intervalo para Bisección
+    ! Verificar que la funcion cambie de signo en el intervalo para Biseccion
     fa = f(a_bis)
     fb = f(b_bis)
     if (fa * fb > 0) then
-      print *, 'Error: La función no cambia de signo en el intervalo proporcionado para Bisección.'
+      print *, 'Error: La funcion no cambia de signo en el intervalo proporcionado para Biseccion.'
     stop
     end if
 
-    ! Método de Bisección
+    ! Metodo de Biseccion
     iteraciones = 0
     do
     medio = (a_bis + b_bis) / 2.0
@@ -43,27 +42,26 @@ program encontrar_raiz
     end do
 
     raiz = medio
-    print *, 'Método de Bisección:'
+    print *, 'Metodo de Biseccion:'
     print *, 'Raíz:', raiz, 'Error:', error, 'Iteraciones:', iteraciones
 
-    ! Solicitar al usuario los valores de entrada para el método de Régula Falsi
     print *, 'Método de Régula Falsi:'
-    print *, 'Ingrese el valor de a (límite inferior del intervalo):'
+    print *, 'Ingrese el valor de a (limite inferior del intervalo):'
     read *, a_rf
-    print *, 'Ingrese el valor de b (límite superior del intervalo):'
+    print *, 'Ingrese el valor de b (limite superior del intervalo):'
     read *, b_rf
     print *, 'Ingrese la tolerancia deseada:'
     read *, tolerancia_rf
 
-    ! Verificar que la función cambie de signo en el intervalo para Régula Falsi
+    ! Verificar que la función cambie de signo en el intervalo para Regula Falsi
     fa = f(a_rf)
     fb = f(b_rf)
     if (fa * fb > 0) then
-      print *, 'Error: La función no cambia de signo en el intervalo proporcionado para Régula Falsi.'
+      print *, 'Error: La funcion no cambia de signo en el intervalo proporcionado para Regula Falsi.'
     stop
     end if
 
-    ! Método de Régula Falsi
+    ! Metodo de Regula Falsi
     iteraciones = 0
     do
       x = a_rf - fa * (b_rf - a_rf) / (fb - fa)
@@ -83,14 +81,14 @@ program encontrar_raiz
     end do
 
     raiz = x
-    print *, 'Método de Régula Falsi:'
-    print *, 'Raíz:', raiz, 'Error:', error, 'Iteraciones:', iteraciones
+    print *, 'Metodo de Regula Falsi:'
+    print *, 'Raiz:', raiz, 'Error:', error, 'Iteraciones:', iteraciones
 
 end program encontrar_raiz
 
-! Declaración de la función f(x) = 2x - 3 fuera del programa principal
+! Declaracion de la funcion f(x) = 2x - 3 
 real function f(x)
     implicit none
     real, intent(in) :: x
-    f = 2.0 * x - 3.0
+    f=2**(log(x)-sin(x))-1
 end function f

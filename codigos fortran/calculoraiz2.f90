@@ -5,19 +5,18 @@ program encontrar_raiz
     real  x, fx, error,f
     integer  iteraciones
 
-    ! Solicitar al usuario los valores de entrada para ambos métodos
-    print *, 'Ingrese el valor de a (límite inferior del intervalo):'
+    print *, 'Ingrese el valor de a (limite inferior del intervalo):'
     read *, a
-    print *, 'Ingrese el valor de b (límite superior del intervalo):'
+    print *, 'Ingrese el valor de b (limite superior del intervalo):'
     read *, b
     print *, 'Ingrese la tolerancia deseada:'
     read *, tolerancia
 
-    ! Verificar que la función cambie de signo en el intervalo
+    ! Verificar que la funcion cambie de signo en el intervalo
     fa = f(a)
     fb = f(b)
     if (fa * fb > 0) then
-      print *, 'Error: La función no cambia de signo en el intervalo proporcionado.'
+      print *, 'Error: La funcion no cambia de signo en el intervalo proporcionado.'
     stop
     end if
 
@@ -41,20 +40,20 @@ program encontrar_raiz
     end do
 
     raiz = medio
-    print *, 'Método de Bisección:'
-    print *, 'Raíz:', raiz, 'Error:', error, 'Iteraciones:', iteraciones
+    print *, 'Metodo de Biseccion:'
+    print *, 'Raiz:', raiz, 'Error:', error, 'Iteraciones:', iteraciones
 
     ! Solicitar al usuario que reinicie los valores para Régula Falsi
-    print *, 'Ingrese el valor de a (límite inferior del intervalo) para Régula Falsi:'
+    print *, 'Ingrese el valor de a (límite inferior del intervalo) :'
     read *, a
-    print *, 'Ingrese el valor de b (límite superior del intervalo) para Régula Falsi:'
+    print *, 'Ingrese el valor de b (límite superior del intervalo) :'
     read *, b
 
-    ! Verificar nuevamente el cambio de signo para Régula Falsi
+    ! Verificar nuevamente el cambio de signo para Regula Falsi
     fa = f(a)
     fb = f(b)
     if (fa * fb > 0) then
-      print *, 'Error: La función no cambia de signo en el intervalo proporcionado para Régula Falsi.'
+      print *, 'Error: La funcion no cambia de signo en el intervalo proporcionado para Regula Falsi.'
     stop
     end if
 
@@ -78,12 +77,12 @@ program encontrar_raiz
     end do
 
     raiz = x
-    print *, 'Método de Régula Falsi:'
-    print *, 'Raíz:', raiz, 'Error:', error, 'Iteraciones:', iteraciones
+    print *, 'Metodo de Regula Falsi:'
+    print *, 'Raiz:', raiz, 'Error:', error, 'Iteraciones:', iteraciones
 
 end program encontrar_raiz
 
-! Definición de la función f(x)
+! Definicion de la funcion f(x)
 function f(x)
     implicit none
     real  f
