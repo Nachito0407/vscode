@@ -32,7 +32,7 @@ end program ej_2_clases_guia5_1
 function f(v)
     implicit none
     real::v,f
-    f=2**(atan(v))+cos(v)
+    f=4*v**3-52*v**2+160*v-100
 end function
 function err(s,t)
     implicit none
