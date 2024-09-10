@@ -1,4 +1,4 @@
-Program calculadora
+    Program calculadora
     Implicit none
     Real a,b,c,suma,resta,producto,potencia,division,discriminante,raiz1,raiz2,parteimaginaria,partereal
     Character*10 operacion
