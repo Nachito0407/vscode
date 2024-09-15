@@ -47,13 +47,14 @@ program bisecccionv2
     end do
 end program 
 
-function f(x) 
-    real x
+function f(x)
+    implicit none
+    real x,f
     f=4*x**3-52*x**2+160*x-100
 end function
 
 function fpm(a,b)
-
-    real a,b
+    implicit none
+    real a,b,fpm
     fpm=(a+b)/2.0
     end function

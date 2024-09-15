@@ -5,7 +5,7 @@ program punto_fijo
     integer itermax,iter
 
     tolerancia=1.0d-9
-    itermax=1000
+    itermax=100000
 
     print*,'ingrese un valor de x'
     read*,x0
@@ -18,17 +18,20 @@ program punto_fijo
             print*,'numero de iteraciones:',iter
             exit
         end if
-    x0=x1
+        x0=x1
+        
+        if (f(x0)==0)then
+            print*,'raiz aproximada en:',x0
+        end if
 
-    end do  
-    
-    if(iter==itermax)then
+        if(iter==itermax)then
         print*,'el metodo no converge'
-    end if
-
+        end if
+    end do
 end program punto_fijo
 
 function f(x)
+    implicit none
     real x,f
     f=(4*x**3-52*x**2+161*x-100)/(-1000)
 end function
