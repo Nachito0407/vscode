@@ -33,5 +33,5 @@ end program punto_fijo
 function f(x)
     implicit none
     real x,f
-    f=(4*x**3-52*x**2+161*x-100)/(-1000)
+    f=100 / (160 + 4*x**2 - 52*x)
 end function
