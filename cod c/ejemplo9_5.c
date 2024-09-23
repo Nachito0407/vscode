@@ -3,6 +3,7 @@
 
 main()
 {
+    
     char character = 'A';
     char string[] = "This is a string";
    char *stringPtr = "This is also a string";
