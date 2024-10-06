@@ -11,7 +11,7 @@ typedef LISTNODE *LISTNODEPTR;
 
 void insert (LISTNODEPTR *, char);
 char delete (LISTNODEPTR *, char);
-int isEmpty (LISTNODEPTR);
+int  isEmpty (LISTNODEPTR);
 void printList (LISTNODEPTR);
 void instructions (void);
 
