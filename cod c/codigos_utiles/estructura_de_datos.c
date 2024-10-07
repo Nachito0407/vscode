@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct listNode {/*self-referential structure*/
+struct listNode { /* estructura auto_referenciada */
     char data;
     struct listNode *nextPtr;
 };
