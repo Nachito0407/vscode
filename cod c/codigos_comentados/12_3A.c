@@ -1,17 +1,17 @@
-/* Operating and maintaining a list */
+/* Operando y manteniendo una lista */
 #include <stdio.h>
 #include <stdlib.h>
 
-struct listNode {  /* self-referential structure */
-   char data;
+struct listNode {  /* estructura auto-referencial */
+   int data;
    struct listNode *nextPtr;
 };
 
 typedef struct listNode LISTNODE;
 typedef LISTNODE *LISTNODEPTR;
 
-void insert(LISTNODEPTR *, char);
-char delete(LISTNODEPTR *, char);
+void insert(LISTNODEPTR *, int);
+int delete(LISTNODEPTR *, int);
 int isEmpty(LISTNODEPTR);
 void printList(LISTNODEPTR);
 void instructions(void);
@@ -19,33 +19,33 @@ void instructions(void);
 main()
 {
    LISTNODEPTR startPtr = NULL;
-   int choice;
-   char item;
+   char choice;
+   int item;
 
-   instructions();  /* display the menu */
+   instructions();  /* mostrar el menú */
    printf("? ");
-   scanf("%d", &choice);
+   scanf("%c", &choice);
 
-   while (choice != 3) {
+   while (choice != 'c') {
 
       switch (choice) {
-         case 1:
+         case 'a':
             printf("Enter a character: ");
-            scanf("\n%c", &item);
+            scanf("\n%d", &item);
             insert(&startPtr, item);
             printList(startPtr);
             break;
-         case 2:
+         case 'b':
             if (!isEmpty(startPtr)) {
                printf("Enter character to be deleted: ");
-               scanf("\n%c", &item);
+               scanf("\n%d", &item);
 
                if (delete(&startPtr, item)) {
-                  printf("%c deleted.\n", item);
+                  printf("%d deleted.\n", item);
                   printList(startPtr);
                }
                else
-                  printf("%c not found.\n\n", item);
+                  printf("%d not found.\n\n", item);
             }
             else
                printf("List is empty.\n\n");
@@ -58,30 +58,30 @@ main()
       }
 
       printf("? ");
-      scanf("%d", &choice);
+      scanf(" %c", &choice);
    }
 
    printf("End of run.\n");
    return 0;
 }
 
-/* Print the instructions */
+/* Mostrar las instrucciones */
 void instructions(void)
 {
    printf("Enter your choice:\n"
-            "   1 to insert an element into the list.\n"
-            "   2 to delete an element from the list.\n"
-            "   3 to end.\n");
+          "   a to insert an element into the list.\n"
+          "   b to delete an element from the list.\n"
+          "   c to end.\n");
 }
 
-/* Insert a new value into the list in sorted order */
-void insert(LISTNODEPTR *sPtr, char value)
+/* Insertar un nuevo valor en la lista en orden ascendente */
+void insert(LISTNODEPTR *sPtr, int value)
 {
    LISTNODEPTR newPtr, previousPtr, currentPtr;
 
    newPtr = malloc(sizeof(LISTNODE));
 
-   if (newPtr != NULL) {    /* is space available */
+   if (newPtr != NULL) {    /* ¿hay espacio disponible? */
       newPtr->data = value;
       newPtr->nextPtr = NULL;
 
@@ -89,8 +89,8 @@ void insert(LISTNODEPTR *sPtr, char value)
       currentPtr = *sPtr;
 
       while (currentPtr != NULL && value > currentPtr->data) {
-         previousPtr = currentPtr;          /* walk to ...   */
-         currentPtr = currentPtr->nextPtr;  /* ... next node */
+         previousPtr = currentPtr;          /* avanzar a ...   */
+         currentPtr = currentPtr->nextPtr;  /* ... el siguiente nodo */
       }
 
       if (previousPtr == NULL) {
@@ -103,18 +103,18 @@ void insert(LISTNODEPTR *sPtr, char value)
       }
    }
    else
-      printf("%c not inserted. No memory available.\n", value);
+      printf("%d not inserted. No memory available.\n", value);
 }
 
-/* Delete a list element */
-char delete(LISTNODEPTR *sPtr, char value)
+/* Eliminar un elemento de la lista */
+int delete(LISTNODEPTR *sPtr, int value)
 {
    LISTNODEPTR previousPtr, currentPtr, tempPtr;
 
    if (value == (*sPtr)->data) {
       tempPtr = *sPtr;
-      *sPtr = (*sPtr)->nextPtr;  /* de-thread the node */
-      free(tempPtr);             /* free the de-threaded node */
+      *sPtr = (*sPtr)->nextPtr;  /* desenlazar el nodo */
+      free(tempPtr);             /* liberar el nodo desenlazado */
       return value;
    }
    else {
@@ -122,8 +122,8 @@ char delete(LISTNODEPTR *sPtr, char value)
       currentPtr = (*sPtr)->nextPtr;
 
       while (currentPtr != NULL && currentPtr->data != value) {
-         previousPtr = currentPtr;          /* walk to ...   */
-         currentPtr = currentPtr->nextPtr;  /* ... next node */
+         previousPtr = currentPtr;          /* avanzar a ...   */
+         currentPtr = currentPtr->nextPtr;  /* ... el siguiente nodo */
       }
 
       if (currentPtr != NULL) {
@@ -131,19 +131,19 @@ char delete(LISTNODEPTR *sPtr, char value)
          previousPtr->nextPtr = currentPtr->nextPtr;
          free(tempPtr);
          return value;
-      }                                                        
+      }
    }
 
    return '\0';
 }
 
-/* Return 1 if the list is empty, 0 otherwise */
+/* Devuelve 1 si la lista está vacía, 0 en caso contrario */
 int isEmpty(LISTNODEPTR sPtr)
 {
    return sPtr == NULL;
 }
 
-/* Print the list */
+/* Mostrar la lista */
 void printList(LISTNODEPTR currentPtr)
 {
    if (currentPtr == NULL)
@@ -152,7 +152,7 @@ void printList(LISTNODEPTR currentPtr)
       printf("The list is:\n");
 
       while (currentPtr != NULL) {
-         printf("%c --> ", currentPtr->data);
+         printf("%d --> ", currentPtr->data);
          currentPtr = currentPtr->nextPtr;
       }
 

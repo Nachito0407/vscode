@@ -4,7 +4,7 @@
 
 struct stackNode {  /* self-referential structure */
     int data;
-   struct stackNode *nextPtr;
+    struct stackNode *nextPtr;
 };
 
 typedef struct stackNode STACKNODE;

@@ -5,7 +5,7 @@
 
 struct queueNode {  /* self-referential structure */
     char data;
-   struct queueNode *nextPtr;
+    struct queueNode *nextPtr;
 };
 
 typedef struct queueNode QUEUENODE;
