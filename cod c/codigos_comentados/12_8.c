@@ -1,123 +1,117 @@
-/* programa de pila dianmica*/
-#include <stdio.h>
-#include <stdlib.h>
+#include <stdio.h>  
+#include <stdlib.h> 
 
-/*estructura autoreferenciada*/
+/* Estructura autoreferenciada para los nodos de la pila */
 struct stackNode {  
-   int data; //define un dato como int
-   struct stackNode *nextPtr; //puntero a stackNode
+    int data; // Dato almacenado en el nodo (un entero)
+    struct stackNode *nextPtr; // Puntero al siguiente nodo de la pila
 };
 
-typedef struct stackNode STACKNODE; //sinonimo de la estrucutra stackNode
-typedef STACKNODE *STACKNODEPTR; //sinonimo para STACKNODE
+typedef struct stackNode STACKNODE; // Crea un alias para la estructura stackNode
+typedef STACKNODE *STACKNODEPTR; // Crea un alias para un puntero a un stackNode
 
-/*prototipos*/
-void push(STACKNODEPTR *, int);
-int pop(STACKNODEPTR *);
-int isEmpty(STACKNODEPTR);
-void printStack(STACKNODEPTR);
-void instructions(void);
+/* Prototipos de funciones */
+void push(STACKNODEPTR *, int); // Función para insertar un valor en la pila
+int pop(STACKNODEPTR *);        // Función para eliminar un valor de la pila
+int isEmpty(STACKNODEPTR);      // Función para verificar si la pila está vacía
+void printStack(STACKNODEPTR);  // Función para imprimir la pila
+void instructions(void);        // Función para mostrar las instrucciones
 
-main() //empieza la ejecucion del programa
+int main() // Empieza la ejecución del programa
 {
-   STACKNODEPTR stackPtr = NULL;  // apunta al tope de la pila
-   int choice, value; //eleccion del menu del usuario, entrada int del usuario
+    STACKNODEPTR stackPtr = NULL;  // Inicializa el puntero de la pila como NULL (pila vacía)
+    int choice, value; // Variables para la elección del usuario y el valor a insertar en la pila
 
-   instructions(); //despliega el menu
+    instructions(); // Despliega el menú de opciones
     printf("? ");
-    scanf("%d", &choice);
+    scanf("%d", &choice); // Lee la opción elegida por el usuario
 
-/*mientras el usuario no introduzca 3*/
+    /* Mientras el usuario no elija 3 (finalizar programa) */
     while (choice != 3) {
-
         switch (choice) {
-            /*empuja el valor dentro de la pila*/
-            case 1:      
+            case 1: // Caso para insertar un valor en la pila
             printf("Enter an integer: ");
-            scanf("%d", &value);
-            push(&stackPtr, value);
-            printStack(stackPtr);
+            scanf("%d", &value); // Lee el valor a insertar
+            push(&stackPtr, value); // Inserta el valor en la pila
+            printStack(stackPtr);    // Imprime el contenido de la pila
             break;
 
-            /*saca el valor de la pila*/
-            case 2:
-            if (!isEmpty(stackPtr)) //si la pila no esta vacia
-                printf("The popped value is %d.\n", 
-                        pop(&stackPtr));
-
-            printStack(stackPtr);
+            case 2: // Caso para eliminar un valor de la pila
+            if (!isEmpty(stackPtr)) // Verifica si la pila no está vacía
+               printf("The popped value is %d.\n", pop(&stackPtr)); // Elimina y muestra el valor de la cima
+            printStack(stackPtr); // Imprime el contenido de la pila
             break;
-            default:
-            printf("Invalid choice.\n\n");
-            instructions();
+
+            default: // Si elige una opción no válida
+            printf("Invalid choice.\n\n"); // Mensaje de opción inválida
+            instructions(); // Muestra nuevamente el menú de opciones
             break;
         }
 
         printf("? ");
-        scanf("%d", &choice);
+        scanf("%d", &choice); // Lee la siguiente elección del usuario
     }
 
-    printf("End of run.\n");
-    return 0;
+    printf("End of run.\n"); // Mensaje de finalización del programa
+    return 0; // Termina el programa correctamente
 }
 
-/* despliega instrucciones del programa para el usuario */
+/* Muestra el menú de opciones para el usuario */
 void instructions(void)
 {
-   printf("Enter choice:\n" //elija una opcion
-          "1 to push a value on the stack\n" //empujar un valor dentro de la pila
-          "2 to pop a value off the stack\n" //sacar un valor de la pila
-          "3 to end program\n"); //terminar el programa
+    printf("Enter choice:\n" // Muestra las opciones del menú
+            "1 to push a value on the stack\n" // Opción para insertar un valor en la pila
+            "2 to pop a value off the stack\n" // Opción para eliminar un valor de la pila
+            "3 to end program\n"); // Opción para finalizar el programa
 }
 
-/* inserta un nodo en la cima de la pila */
+/* Inserta un nodo en la cima de la pila */
 void push(STACKNODEPTR *topPtr, int info)
 {
-   STACKNODEPTR newPtr; //puntero al nuevo nodo
+    STACKNODEPTR newPtr; // Crea un puntero para el nuevo nodo
 
-    newPtr = malloc(sizeof(STACKNODE)); 
-   if (newPtr != NULL) { //inserta el nodo en la cima de la pila
-        newPtr->data = info;
-      newPtr->nextPtr = *topPtr;
-      *topPtr = newPtr;
+    newPtr = malloc(sizeof(STACKNODE)); // Asigna memoria para el nuevo nodo
+    if (newPtr != NULL) { // Verifica si se pudo asignar memoria
+        newPtr->data = info;        // Asigna el valor al nuevo nodo
+        newPtr->nextPtr = *topPtr;  // El nuevo nodo apunta al nodo actual de la cima de la pila
+        *topPtr = newPtr;           // Actualiza la cima de la pila con el nuevo nodo
+    } else { // Si no hay memoria suficiente
+        printf("%d not inserted. No memory available.\n", info); // Muestra un mensaje de error
     }
-   else //no queda espacio disponible
-        printf("%d not inserted. No memory available.\n", info);
 }
 
-/* elimina un nodo de la cima de la pila */
+/* Elimina un nodo de la cima de la pila */
 int pop(STACKNODEPTR *topPtr)
 {
-   STACKNODEPTR tempPtr; //puntero a un nodo temporal
-   int popValue; // valor del nodo
+   STACKNODEPTR tempPtr; // Crea un puntero temporal para almacenar el nodo a eliminar
+   int popValue;         // Variable para almacenar el valor del nodo eliminado
 
-   tempPtr = *topPtr;
-    popValue = (*topPtr)->data;
-   *topPtr = (*topPtr)->nextPtr;
-    free(tempPtr);
-    return popValue;
+   tempPtr = *topPtr;            // Apunta al nodo de la cima
+   popValue = (*topPtr)->data;   // Obtiene el valor del nodo de la cima
+   *topPtr = (*topPtr)->nextPtr; // Actualiza la cima de la pila al siguiente nodo
+   free(tempPtr);                // Libera la memoria del nodo eliminado
+   return popValue;              // Devuelve el valor del nodo eliminado
 }
 
-/* imprime la pila */
+/* Imprime el contenido de la pila */
 void printStack(STACKNODEPTR currentPtr)
 {
-   if (currentPtr == NULL) //si la pila esta vacia
-        printf("The stack is empty.\n\n");
-    else {
-        printf("The stack is:\n");
+   if (currentPtr == NULL) { // Si la pila está vacía
+        printf("The stack is empty.\n\n"); // Muestra un mensaje de pila vacía
+   } else { // Si la pila contiene nodos
+        printf("The stack is:\n"); // Muestra los valores de la pila
 
-      while (currentPtr != NULL) { //mientras no sea el final de la pila
-            printf("%d --> ", currentPtr->data);
-            currentPtr = currentPtr->nextPtr;
+        while (currentPtr != NULL) { // Recorre la pila hasta el final
+            printf("%d --> ", currentPtr->data); // Imprime el valor del nodo actual
+            currentPtr = currentPtr->nextPtr;    // Avanza al siguiente nodo
         }
 
-        printf("NULL\n\n");
+      printf("NULL\n\n"); // Indica el final de la pila
     }
 }
 
-/* devuelve 1 si la pila esta vacia, de lo contrario 0 */
+/* Verifica si la pila está vacía, devuelve 1 si es vacía, 0 si no */
 int isEmpty(STACKNODEPTR topPtr)
 {
-    return topPtr == NULL;
+    return topPtr == NULL; // Retorna 1 si la cima de la pila es NULL (vacía), 0 si no
 }
-
