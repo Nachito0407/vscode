@@ -85,7 +85,6 @@ int pop(STACKNODEPTR *topPtr)
 {
    STACKNODEPTR tempPtr; // Crea un puntero temporal para almacenar el nodo a eliminar
    int popValue;         // Variable para almacenar el valor del nodo eliminado
-
    tempPtr = *topPtr;            // Apunta al nodo de la cima
    popValue = (*topPtr)->data;   // Obtiene el valor del nodo de la cima
    *topPtr = (*topPtr)->nextPtr; // Actualiza la cima de la pila al siguiente nodo
