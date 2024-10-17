@@ -5,5 +5,8 @@
         "FIG12_3.C": "cpp",
         "FIG12_3A.C": "cpp"
     },
-    "fortran.fortls.disabled": true
+    "fortran.fortls.disabled": true,
+    "files.exclude": {
+		"**/*.exe": true,
+	}
 }
