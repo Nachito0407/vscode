@@ -1,60 +1,77 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-        "version": "0.2.0",
-        "configurations": [
-          {
-            "name": "Debug",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/${fileBasenameNoExtension}",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": false,
-            "MIMode": "gdb",
-            "setupCommands": [
+  "version": "0.2.0",
+  "configurations": [
+      {
+          "name": "(gdb) Adjuntar",
+          "type": "cppdbg",
+          "request": "attach",
+          "program": "${workspaceFolder}/a.exe",
+          "MIMode": "gdb",
+          "miDebuggerPath": "C:/raylib/w64devkit/bin/gdb.exe",
+          "setupCommands": [
               {
-                "description": "Enable pretty-printing for gdb",
-                "text": "-enable-pretty-printing",
-                "ignoreFailures": false
+                  "description": "Habilitar la impresión con sangría para gdb",
+                  "text": "-enable-pretty-printing",
+                  "ignoreFailures": true
+              },
+              {
+                  "description": "Establecer tipo de desensamblado en Intel",
+                  "text": "-gdb-set disassembly-flavor intel",
+                  "ignoreFailures": true
               }
-            ],
-            "windows": {
-              "miDebuggerPath": "C:/raylib/w64devkit/bin/gdb.exe",
-            },
-            "osx": {
-              "MIMode": "lldb"
-            },
-            "linux": {
-              "miDebuggerPath": "/usr/bin/gdb",
-            },
-            "preLaunchTask": "build debug"
+          ]
+      },
+      {
+          "name": "Debug",
+          "type": "cppdbg",
+          "request": "launch",
+          "program": "${workspaceFolder}/${fileBasenameNoExtension}",
+          "args": [],
+          "stopAtEntry": false,
+          "cwd": "${workspaceFolder}",
+          "environment": [],
+          "externalConsole": false,
+          "MIMode": "gdb",
+          "setupCommands": [
+              {
+                  "description": "Habilitar la impresión con sangría para gdb",
+                  "text": "-enable-pretty-printing",
+                  "ignoreFailures": false
+              }
+          ],
+          "windows": {
+              "miDebuggerPath": "C:/raylib/w64devkit/bin/gdb.exe"
           },
-          {
-            "name": "Run",
-            "type": "cppdbg",
-            "request": "launch",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": false,
-            "program": "${workspaceFolder}/${fileBasenameNoExtension}",
-            "MIMode": "gdb",
-            "windows": {
+          "osx": {
+              "MIMode": "lldb"
+          },
+          "linux": {
+              "miDebuggerPath": "/usr/bin/gdb"
+          },
+          "preLaunchTask": "build debug"
+      },
+      {
+          "name": "Run",
+          "type": "cppdbg",
+          "request": "launch",
+          "args": [],
+          "stopAtEntry": false,
+          "cwd": "${workspaceFolder}",
+          "environment": [],
+          "externalConsole": false,
+          "program": "${workspaceFolder}/${fileBasenameNoExtension}",
+          "MIMode": "gdb",
+          "windows": {
               "program": "${workspaceFolder}/${fileBasenameNoExtension}.exe",
               "miDebuggerPath": "C:/raylib/w64devkit/bin/gdb.exe"
-            },
-            "osx": {
+          },
+          "osx": {
               "MIMode": "lldb"
-            },
-            "linux": {
+          },
+          "linux": {
               "miDebuggerPath": "/usr/bin/gdb"
-            },
-            "preLaunchTask": "build release",
-          }
-        ]
+          },
+          "preLaunchTask": "build release"
       }
+  ]
+}

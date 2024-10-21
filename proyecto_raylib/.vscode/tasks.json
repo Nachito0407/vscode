@@ -71,10 +71,10 @@
             "command": "gcc",
             "args": [
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "${fileDirname}/${fileBasenameNoExtension}.exe",
                 "${file}",
-                "-I\"F:\\Mi unidad\\visual studio code\\proyecto_raylib\\include\"", 
-                "-L\"F:\\Mi unidad\\visual studio code\\proyecto_raylib\\lib\"",
+                "-I\"F:/Mi unidad/visual studio code/proyecto_raylib/include\"", 
+                "-L\"F:/Mi unidad/visual studio code/proyecto_raylib/lib\"",
                 "-lraylib", 
                 "-lopengl32", 
                 "-lgdi32", 
@@ -87,5 +87,6 @@
             "problemMatcher": ["$gcc"],
             "detail": "Compilar un archivo con Raylib usando GCC"
         }
+        
     ]
 }
