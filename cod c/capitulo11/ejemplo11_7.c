@@ -6,7 +6,7 @@ main()
     int account;
     char name[30];
     float balance;
-   FILE *cfPtr;   /* cfPtr = clients.dat file pointer */
+    FILE *cfPtr;   /* cfPtr = clients.dat file pointer */
 
     if ((cfPtr = fopen("clients.dat", "r")) == NULL)
         printf("File could not be opened\n");
