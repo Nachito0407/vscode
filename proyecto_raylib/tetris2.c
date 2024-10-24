@@ -19,7 +19,7 @@
 #include <math.h>
 
 #if defined(PLATFORM_WEB)
-    #include <emscripten/emscripten.h>
+#include <emscripten/emscripten.h>
 #endif
 
 //----------------------------------------------------------------------------------
@@ -101,6 +101,11 @@ static bool ResolveTurnMovement();
 static void CheckDetection(bool *detection);
 static void CheckCompletion(bool *lineToDelete);
 static int DeleteCompleteLines();
+
+Color colores[] = {
+    RED, GREEN, BLUE, YELLOW, PURPLE, ORANGE, SKYBLUE
+};
+Color colorPiezaMoviendose;
 
 //------------------------------------------------------------------------------------
 // Program main entry point
@@ -332,17 +337,18 @@ void DrawGame(void)
                     }
                     else if (grid[i][j] == FULL)
                     {
-                        DrawRectangle(offset.x, offset.y, SQUARE_SIZE, SQUARE_SIZE, RED);//color del bloque cuando se pone
+                        DrawRectangle(offset.x, offset.y, SQUARE_SIZE, SQUARE_SIZE, RED);  // Esto se puede cambiar a un color específico para piezas "fijas"
                         offset.x += SQUARE_SIZE;
                     }
                     else if (grid[i][j] == MOVING)
                     {
-                        DrawRectangle(offset.x, offset.y, SQUARE_SIZE, SQUARE_SIZE, LIGHTGRAY);// color del bloque en movimiento
+                        // Usa el color asignado a la pieza en movimiento
+                        DrawRectangle(offset.x, offset.y, SQUARE_SIZE, SQUARE_SIZE, colorPiezaMoviendose); 
                         offset.x += SQUARE_SIZE;
                     }
                     else if (grid[i][j] == BLOCK)
                     {
-                        DrawRectangle(offset.x, offset.y, SQUARE_SIZE, SQUARE_SIZE, ORANGE);//color del marco
+                        DrawRectangle(offset.x, offset.y, SQUARE_SIZE, SQUARE_SIZE, BLUE);//color del marco
                         offset.x += SQUARE_SIZE;
                     }
                     else if (grid[i][j] == FADING)
@@ -376,7 +382,7 @@ void DrawGame(void)
                     }
                     else if (incomingPiece[i][j] == MOVING)
                     {
-                        DrawRectangle(offset.x, offset.y, SQUARE_SIZE, SQUARE_SIZE, GRAY);
+                        DrawRectangle(offset.x, offset.y, SQUARE_SIZE, SQUARE_SIZE, GRAY); // Puedes modificar esto para darle color aleatorio también
                         offset.x += SQUARE_SIZE;
                     }
                 }
@@ -394,6 +400,7 @@ void DrawGame(void)
 
     EndDrawing();
 }
+
 
 // Unload game variables
 void UnloadGame(void)
@@ -450,7 +457,8 @@ static bool Createpiece()
 static void GetRandompiece()
 {
     int random = GetRandomValue(0, 6);
-
+    colorPiezaMoviendose = colores[GetRandomValue(0, 6)];//
+    colorPiezaMoviendose=ColorFromHSV(GetRandomValue(0,360),1.0f,1.0f);
     for (int i = 0; i < 4; i++)
     {
         for (int j = 0; j < 4; j++)
