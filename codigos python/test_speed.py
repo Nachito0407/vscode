@@ -4,7 +4,7 @@ def bits_to_mbps(bits):
     return round(bits / 1_000_000, 2)  # Convertir bits a Mbps y redondear a dos decimales
 
 try:
-    st = speedtest.speedtest()
+    st = speedtest.Speedtest()
     input('Presionar Enter para iniciar la prueba de velocidad')
     
     # Elegir el mejor servidor para asegurar resultados más precisos
