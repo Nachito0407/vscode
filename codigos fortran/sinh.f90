@@ -38,15 +38,11 @@ program problema1
     end do
     signo=(-1)**k
     
-    
     serienueva=serievieja+x**(2.d0*k+1)*signo*par_fact/(4.d0**k*fact**2*(2.d0*k+1.d0))
-    
-    
-    
+
     error=abs((serienueva-serievieja)/(0.5*(serienueva+serievieja))) 
-    
+
     serievieja=serienueva 
-    
     
     end do
     print*, "la serie es", serienueva
