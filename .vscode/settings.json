@@ -3,7 +3,8 @@
         "conio.h": "c",
         "stdio.h": "c",
         "FIG12_3.C": "cpp",
-        "FIG12_3A.C": "cpp"
+        "FIG12_3A.C": "cpp",
+        "pmodda2.h": "c"
     },
     "fortran.fortls.disabled": true,
     "files.exclude": {
