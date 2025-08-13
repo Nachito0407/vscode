@@ -16,7 +16,7 @@ program raices
         print*,'Raiz1=',raiz1
         print*,'Raiz2=',raiz2
     else
-        partereal=-b/(2.0*a)
+        partereal=-b/(2.0*a) !para raices complejas
         parteimaginaria=sqrt(-discriminante)/(2.0*a)
         print*,'raices complejas'
         print*,'Raiz1=',partereal,'+',parteimaginaria,'i'
