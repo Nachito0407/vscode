@@ -1,6 +1,5 @@
 program factorial
-
-    implicit none
+implicit none
     integer i , fact, n
     print *, "Ingrese un numero"
     read *, n
