@@ -35,7 +35,6 @@ subroutine punto_fijo(x0, tol, max_iter)
         if (abs(x_next - x) < tol) then
             print *, " No converge en: ", i, " iteraciones"
             print *, "Raiz aproximada = ", x_next
-            return
         end if
         x = x_next
     end do
