@@ -8,7 +8,7 @@
     },
     "fortran.fortls.disabled": true,
     "files.exclude": {
-		"**/*.exe": true,
+        "**/*.exe": true
     },
     "python-envs.pythonProjects": [
         {
@@ -16,5 +16,9 @@
             "envManager": "ms-python.python:system",
             "packageManager": "ms-python.python:pip"
         }
-    ]
+    ],
+    "vscode-animations.enable": true,
+    "vscode-animations.type": "particles",
+    "vscode-animations.intensity": 0.8,
+    "vscode-animations.duration": 400
 }
