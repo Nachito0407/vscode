@@ -2,13 +2,14 @@ program eliminacion_gaussiana
     implicit none
     integer , parameter :: n=4
     real(8) , dimension(n,n) :: a
-    real(8) , dimension(n) :: b
+    real(8) , dimension(n) :: b , x
 
     call leer_matriz_A(a,n)
-
     call leer_vector_b(b,n)
 
+    call pivoteo_trivial(a,n,b)
     call eliminacion_gauss(a,n,b)
+    call retrosustitucion(a,n,b,x)
 
     call imprimir_matriz(a,n)
 
@@ -68,3 +69,47 @@ subroutine leer_vector_b(b, n)
     end do
     close(11)
 end subroutine leer_vector_b
+
+subroutine retrosustitucion(a,n,b,x)
+    implicit none
+    integer :: n, i, j
+    real(8) :: a(n,n), b(n), x(n)
+    real(8) :: suma
+    
+    x(n) = b(n)/a(n,n)
+    
+    do i = n-1, 1, -1
+        suma = 0.0d0
+        do j = i+1, n
+            suma = suma + a(i,j)*x(j)
+        end do
+        x(i) = (b(i) - suma)/a(i,i)
+    end do
+end subroutine retrosustitucion
+
+subroutine pivoteo_trivial(a,n,b)
+    implicit none
+    integer :: n, i, j, k
+    real(8) :: a(n,n), b(n)
+    real(8), dimension(n) :: temp_f
+    real(8) :: temp_b
+    
+    do i = 1, n-1
+        k = i
+        do j = i+1, n
+            if (abs(a(j,i)) > abs(a(k,i))) then
+                k = j
+            end if
+        end do
+        
+        if (k /= i) then
+            temp_f = a(i,:)
+            a(i,:) = a(k,:)
+            a(k,:) = temp_f
+            
+            temp_b = b(i)
+            b(i) = b(k)
+            b(k) = temp_b
+        end if
+    end do
+end subroutine pivoteo_trivial
