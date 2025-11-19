@@ -348,7 +348,7 @@ void DrawGame(void)
                     }
                     else if (grid[i][j] == BLOCK)
                     {
-                        DrawRectangle(offset.x, offset.y, SQUARE_SIZE, SQUARE_SIZE, BLUE);//color del marco
+                        DrawRectangle(offset.x, offset.y, SQUARE_SIZE, SQUARE_SIZE, GREEN);//color del marco
                         offset.x += SQUARE_SIZE;
                     }
                     else if (grid[i][j] == FADING)
